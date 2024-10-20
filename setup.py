@@ -3,6 +3,7 @@ import sys, os, timeit
 from setuptools import setup, Extension, Command
 from sysconfig import get_platform
 import versioneer
+import unittest
 
 LONG_DESCRIPTION = """\
 Python bindings to the Ed25519 public-key signature system.
@@ -38,37 +39,36 @@ m = Extension("ed25519._ed25519",
 commands = versioneer.get_cmdclass().copy()
 
 
-# class Test(Command):
-#     description = "run tests"
-#     user_options = []
-#
-#     def initialize_options(self):
-#         pass
-#
-#     def finalize_options(self):
-#         pass
-#
-#     def setup_path(self):
-#         # copied from distutils/command/build.py
-#         self.plat_name = get_platform()
-#         plat_specifier = ".%s-%s" % (self.plat_name, sys.version[0:3])
-#         self.build_lib = os.path.join("build", "lib" + plat_specifier)
-#         sys.path.insert(0, self.build_lib)
-#
-#     def run(self):
-#         self.setup_path()
-#         try:
-#             import unittest
-#         except ImportError:
-#             print("Unittest module not found.")
-#             sys.exit(1)
-#
-#         test = unittest.defaultTestLoader.loadTestsFromName("ed25519.test_ed25519")
-#         runner = unittest.TextTestRunner(verbosity=2)
-#         result = runner.run(test)
-#         sys.exit(not result.wasSuccessful())
-#
-# commands["test"] = Test
+class Test(Command):
+    description = "run tests"
+    user_options = []
+
+    def initialize_options(self):
+        pass
+
+    def finalize_options(self):
+        pass
+
+    def setup_path(self):
+        # copied from distutils/command/build.py
+        self.plat_name = get_platform()
+        plat_specifier = ".%s-%s" % (self.plat_name, sys.version[0:3])
+        self.build_lib = os.path.join("build", "lib" + plat_specifier)
+        sys.path.insert(0, self.build_lib)
+
+    def run(self):
+        self.setup_path()
+        test_loader = unittest.defaultTestLoader
+        test_runner = unittest.TextTestRunner(verbosity=2)
+        test_suite = test_loader.loadTestsFromName("ed25519.test_ed25519")
+
+        result = test_runner.run(test_suite)
+        if not result.wasSuccessful():
+            sys.exit(1)
+        sys.exit(0)
+
+
+commands["test"] = Test
 
 
 class KnownAnswerTest(Test):

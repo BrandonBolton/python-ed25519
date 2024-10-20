@@ -1,6 +1,10 @@
 
 User-Visible Changes in python-ed25519
 
+* Release 2.0 (10-20-2024)
+Forked the unmaintained package from Warner https://github.com/warner/python-ed25519, and updated it to
+work with modern Python versions. - Brandon
+
 * Release 1.5 (01-Jun-2019)
 
 Fixed 64-bit windows compatibility, thanks to Theodore "okready" Cipicchio

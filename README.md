@@ -6,7 +6,7 @@ For new applications, I recommend you use
 NaCl/libsodium library, not just the ed25519 portion), but it is
 well-maintained by the diligent and conscientious PyCA team, whereas I've
 allowed this repository to languish. `PyNaCl` is also about 10-20 times
-faster. A guide for migration fron `python-ed25519` to `PyNaCl` is included
+faster. A guide for migration from `python-ed25519` to `PyNaCl` is included
 below.
 
 Python Bindings to the Ed25519 Digital Signature System
@@ -33,7 +33,7 @@ and RSA-3072.
 
 This library includes a copy of all the C code necessary. You will need
 Python 2.7 or Python 3.x (3.4 or later) and a C compiler. The tests are run
-automatically against python 2.7, 3.4, 3.5, 3.6, 3.7, and pypy versions of
+automatically against python 2.7, 3.4, 3.5, 3.6, 3.7, 3.12, and pypy versions of
 Python 2.7 and 3.6.
 
 

@@ -127,7 +127,7 @@ class Speed(Test):
 
 commands["speed"] = Speed
 
-setup(name="ed25519",
+setup(name="python-ed25519",
       version=versioneer.get_version(),
       description="Ed25519 public-key signatures",
       long_description=LONG_DESCRIPTION,

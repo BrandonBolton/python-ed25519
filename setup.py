@@ -128,9 +128,10 @@ class Speed(Test):
 commands["speed"] = Speed
 
 setup(name="python-ed25519",
-      version=versioneer.get_version(),
+      version='1.0',
       description="Ed25519 public-key signatures",
       long_description=LONG_DESCRIPTION,
+      long_description_content_type="text/markdown",
       author="Brandon Bolton",
       author_email="email@brandonbolton.com",
       license="MIT",
